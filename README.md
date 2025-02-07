@@ -57,6 +57,7 @@ A learning platform that connects students with tutors for on-site tutoring and 
 
 - Home page (Browse and manage services)
 - Course management (Create/edit courses)
+- Course detail page
 - Revenue management (Track earnings)
 - Register/Login
 
@@ -64,6 +65,7 @@ A learning platform that connects students with tutors for on-site tutoring and 
 
 - Home page (Browse tutors & courses)
 - Course management (Enrolled courses)
+- Course detail page
 - Order management (Bookings & history)
 - Register/Login
 

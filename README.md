@@ -78,7 +78,7 @@ As a learner:
 
 ## Sitemap
 
-### For Tutors - focus
+### For Creators
 
 - Home page: table list for all courses
 - Course detail page
@@ -92,20 +92,24 @@ As a learner:
   - Edit Chapter page
   - Delete Chapter page
 
-### For Students
+### For Learners
 
 - Home page (Browse courses)
 - Course detail page
 
 ## Mockups
 
-![](./mockups/register.png)
-![](./mockups/login.png)
-![](./mockups/creator-main.png)
-![](./mockups/creator-course-detail.png)
-![](./mockups/creator-chapter-detail.png)
-![](./mockups/student-browse.png)
-![](./mockups/student-course-detail.png)
+For creators:
+
+<img src="./mockups/register.png" width="500">
+<img src="./mockups/login.png" width="500">
+<img src="./mockups/creator-main.png" width="500">
+<img src="./mockups/creator-course-detail.png" width="500">
+<img src="./mockups/creator-chapter-detail.png" width="500">
+
+For learners:
+<img src="./mockups/student-browse.png" width="500">
+<img src="./mockups/student-course-detail.png" width="500">
 
 ## Database Design
 

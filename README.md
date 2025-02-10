@@ -99,7 +99,7 @@ As a learner:
 
 ## Mockups
 
-For creators:
+#### For creators:
 
 <img src="./mockups/register.png" width="500">
 <img src="./mockups/login.png" width="500">
@@ -107,7 +107,8 @@ For creators:
 <img src="./mockups/creator-course-detail.png" width="500">
 <img src="./mockups/creator-chapter-detail.png" width="500">
 
-For learners:
+#### For learners:
+
 <img src="./mockups/student-browse.png" width="500">
 <img src="./mockups/student-course-detail.png" width="500">
 

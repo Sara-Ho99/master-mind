@@ -148,20 +148,30 @@ As a learner:
 
 ## Roadmap
 
-- Create client
+- Create project with Next.js
 
-  - Initialize React project
-  - Setup routes and basic folders
+  - Use React.js and Express.js as backup
+    - Initialize React project
+    - Setup routes and basic folders
+    - Setup Express.js with routes, middleware, and controller folder
 
-- Create server
+- Database Setup
 
-  - Setup Express.js with routes, middleware, and controller folder
-
-- Create Database
-
-  - Migrations & seeds for Users, Courses, and Bookings
+  - Knex.js for migrations & seeding for users and courses
+  - Try: Prisma
 
 - Feature Branches
+
+  - Get all courses table list UI
+  - Get all courses API
+  - Get single course UI
+  - Get singel course API
+  - Add a new course UI
+  - Add a new course API
+  - Edit course UI
+  - Edit course API
+  - delete course UI
+  - delete course API
 
 - Fix Branches
 - DEMO DAY

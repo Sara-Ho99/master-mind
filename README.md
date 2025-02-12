@@ -162,6 +162,7 @@ As a learner:
 
 - Feature Branches
 
+  - feature-1: try authentication with clerk and complete register and login
   - Get all courses table list UI
   - Get all courses API
   - Get single course UI

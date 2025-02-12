@@ -26,12 +26,16 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <SignedOut>
+            {/* if signed out, show sign-in button */}
             <SignInButton />
           </SignedOut>
           <SignedIn>
+            {/* if signed in, show user button */}
             <UserButton />
           </SignedIn>
-          {children}
+          <div className="h-full flex items-center justify-center">
+            {children}
+          </div>
         </body>
       </html>
     </ClerkProvider>

@@ -2,7 +2,7 @@
 "use client";
 import { Search, BookOpen } from "lucide-react";
 import { usePathname } from "next/navigation";
-import SidebarItems from "./sidebar-items";
+import SidebarItem from "./sidebar-item";
 
 const studentRoutes = [
   {
@@ -25,7 +25,7 @@ function SidebarRoutes() {
   return (
     <div className="flex flex-col w-full">
       {routes.map((route) => (
-        <SidebarItems />
+        <SidebarItem />
       ))}
     </div>
   );

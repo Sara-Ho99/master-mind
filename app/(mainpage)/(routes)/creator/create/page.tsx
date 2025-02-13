@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 import {
   Form,
@@ -36,12 +37,19 @@ function CreatePage() {
     },
   });
 
+  const router = useRouter();
+
   // use formState to get the state of the form
   const { isSubmitting, isValid } = form.formState;
 
   // Handle form submission
-  const handleFormSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const handleFormSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const { data } = await axios.post("/api/courses", values);
+      router.push(`/creator/courses/${data.id}`);
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
 
   return (

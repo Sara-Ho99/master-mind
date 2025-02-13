@@ -33,21 +33,21 @@ function SidebarItem({ icon: Icon, label, href }: SidebarItemProps) {
       className={cn(
         "flex items-center gap-x-2 text-slate-500 text-sm font-[700] pl-6 transition-all hover:text-slate-600 hover:bg-slate-300/20",
         isActive &&
-          "text-[#3f37c9] bg-sky-200/20 hover:bg-sky-200/20 hover:text-[#3f37c9]"
+          "text-[#023047] bg-[#8ecae6] hover:bg-[#8ecae6] hover:text-[#023047]"
       )}
     >
       {/* button */}
       <div className="flex items-center gap-x-2 py-4">
         <Icon
           size={22}
-          className={cn("text-slate-500", isActive && "text-[#3f37c9]")}
+          className={cn("text-slate-500", isActive && "text-[#023047]")}
         />
         {label}
       </div>
       {/* side indicator */}
       <div
         className={cn(
-          "ml-auto opacity-0 border-2 border-[#3f37c9] h-full transition-all",
+          "ml-auto opacity-0 border-2 border-[#023047] h-full transition-all",
           isActive && "opacity-100"
         )}
       />

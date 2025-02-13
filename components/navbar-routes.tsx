@@ -1,7 +1,10 @@
+"use client";
+import { UserButton } from "@clerk/nextjs";
+
 function NavbarRoutes() {
   return (
-    <div className="flex-1 flex items-center justify-center">
-      this is the navbar routes
+    <div className="flex gap-x-2 ml-auto">
+      <UserButton />
     </div>
   );
 }

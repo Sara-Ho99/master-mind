@@ -21,7 +21,7 @@ function NavbarRoutes() {
           </Button>
         </Link>
       ) : (
-        <Link href="/creator">
+        <Link href="/creator/courses">
           <Button size="sm" variant="custom">
             <LogIn className="h-4 w-4 p-0" />
             Creator mode

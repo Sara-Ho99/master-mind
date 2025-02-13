@@ -7,7 +7,7 @@ import SidebarItem from "./sidebar-item";
 const studentRoutes = [
   {
     icon: BookOpen,
-    label: "Dashboard",
+    label: "MyCourse",
     href: "/",
   },
   {
@@ -25,7 +25,12 @@ function SidebarRoutes() {
   return (
     <div className="flex flex-col w-full">
       {routes.map((route) => (
-        <SidebarItem />
+        <SidebarItem
+          key={route.href}
+          icon={route.icon}
+          label={route.label}
+          href={route.href}
+        />
       ))}
     </div>
   );

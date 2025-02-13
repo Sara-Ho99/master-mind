@@ -60,11 +60,15 @@ function CreatePage() {
             <FormField
               control={form.control}
               name="title"
-              render={(field) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Course Title</FormLabel>
                   <FormControl>
-                    <Input />
+                    <Input
+                      disabled={isSubmitting}
+                      placeholder="e.g. 'React for Beginners'"
+                      {...field}
+                    />
                   </FormControl>
                   <FormDescription>
                     Enter a name for your course
@@ -73,11 +77,15 @@ function CreatePage() {
                 </FormItem>
               )}
             />
-            <div>
+            <div className="flex items-center gap-x-2">
               <Link href="/">
-                <Button>Cancel</Button>
+                <Button type="button" variant="custom">
+                  Cancel
+                </Button>
               </Link>
-              <Button>Next</Button>
+              <Button type="submit" disabled={!isValid || isSubmitting}>
+                Next
+              </Button>
             </div>
           </form>
         </Form>

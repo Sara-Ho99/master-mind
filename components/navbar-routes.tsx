@@ -15,12 +15,12 @@ function NavbarRoutes() {
   return (
     <div className="flex gap-x-2 ml-auto">
       {isCreatorPage || isCoursePage ? (
-        <Button size="sm" variant="ghost">
+        <Button size="sm" variant="custom">
           <LogOut className="h-4 w-4 mr-2" />
           Exit
         </Button>
       ) : (
-        <Link href="/creator/courses">
+        <Link href="/creator">
           <Button size="sm" variant="custom">
             creator mode
           </Button>

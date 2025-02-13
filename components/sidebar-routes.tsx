@@ -1,10 +1,10 @@
 // indicate that the component should run on the client-side (browser) instead of the server-side (Node.js).
 "use client";
-import { Search, BookOpen } from "lucide-react";
+import { Search, BookOpen, ListChecks, PieChart } from "lucide-react";
 import { usePathname } from "next/navigation";
 import SidebarItem from "./sidebar-item";
 
-const studentRoutes = [
+const learnerRoutes = [
   {
     icon: BookOpen,
     label: "MyCourse",
@@ -17,10 +17,24 @@ const studentRoutes = [
   },
 ];
 
+const creatorRoutes = [
+  {
+    icon: ListChecks,
+    label: "Overview",
+    href: "/creator/courses",
+  },
+  {
+    icon: PieChart,
+    label: "Dashboard",
+    href: "/creator/dashboard",
+  },
+];
+
 function SidebarRoutes() {
   const pathname = usePathname();
+  const isCreatorPage = pathname?.includes("/creator");
 
-  const routes = studentRoutes;
+  const routes = isCreatorPage ? creatorRoutes : learnerRoutes;
 
   return (
     <div className="flex flex-col w-full">

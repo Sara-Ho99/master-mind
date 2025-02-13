@@ -16,14 +16,14 @@ function NavbarRoutes() {
       {isCreatorPage || isCoursePage ? (
         <Link href="/">
           <Button size="sm" variant="custom">
-            <LogOut className="h-4 w-4 mr-2" />
+            <LogOut className="h-4 w-4 p-0" />
             Learner mode
           </Button>
         </Link>
       ) : (
         <Link href="/creator">
           <Button size="sm" variant="custom">
-            <LogIn className="h-4 w-4 mr-2" />
+            <LogIn className="h-4 w-4 p-0" />
             Creator mode
           </Button>
         </Link>

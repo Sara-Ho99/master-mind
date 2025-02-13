@@ -163,6 +163,7 @@ As a learner:
 - Feature Branches
 
   - feature-1: try authentication with clerk and complete register and login
+  - feature-2: mainpage - sidebar and navbar for navigation
   - Get all courses table list UI
   - Get all courses API
   - Get single course UI

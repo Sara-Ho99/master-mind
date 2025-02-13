@@ -1,4 +1,5 @@
 "use client";
+
 import * as z from "zod"; // zod for schema validation
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,17 +20,68 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+// Form validation
+const formSchema = z.object({
+  title: z.string().min(1, {
+    message: "Title is required",
+  }),
+});
+
 function CreatePage() {
-  // Form validation
-  const formSchema = z.object({
-    title: z.string().min(1, {
-      message: "Title is required",
-    }),
+  // Initialize useForm hook
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+    },
   });
 
+  // use formState to get the state of the form
+  const { isSubmitting, isValid } = form.formState;
+
+  // Handle form submission
+  const handleFormSubmit = (values: z.infer<typeof formSchema>) => {
+    console.log(values);
+  };
+
   return (
-    <div>
-      <h1>CreatePage</h1>
+    <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
+      <div>
+        <h1 className="text-2xl">Start creating...</h1>
+        <p className="text-sm text-slate-600">
+          Choose a name for your course. You can edit it anytime.
+        </p>
+        {/* Shadcn UI */}
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(handleFormSubmit)}
+            className="space-y-8 mt-8"
+          >
+            <FormField
+              control={form.control}
+              name="title"
+              render={(field) => (
+                <FormItem>
+                  <FormLabel>Course Title</FormLabel>
+                  <FormControl>
+                    <Input />
+                  </FormControl>
+                  <FormDescription>
+                    Enter a name for your course
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div>
+              <Link href="/">
+                <Button>Cancel</Button>
+              </Link>
+              <Button>Next</Button>
+            </div>
+          </form>
+        </Form>
+      </div>
     </div>
   );
 }

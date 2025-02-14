@@ -165,17 +165,13 @@ As a learner:
   - feature-1: try authentication with clerk and complete register and login
   - feature-2: navigation(sidebar and navbar) for learner
   - feature-3: navigation(sidebar and navbar) for creator
-  - feature-4: add new course
-  - Get all courses table list UI
-  - Get all courses API
-  - Get single course UI
-  - Get singel course API
-  - Add a new course UI
-  - Add a new course API
-  - Edit course UI
-  - Edit course API
-  - delete course UI
-  - delete course API
+  - feature-4: add new course (Frontend and Backend)
+  - feature-5: edit course (Frontend and Backend)
+  - feature-6: delete course (Frontend and Backend)
+  - feature-7: get courses for creator (Frontend and Backend)
+  - feature-8: get courses for creator (Frontend and Backend)
+  - (optional) feature-9: analytics dashboard
+  - (optional) feature-10: course purchase and payment
 
 - Fix Branches
 - DEMO DAY

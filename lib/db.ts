@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-
+// to avoid hot reload issues
 declare global {
   var prisma: PrismaClient | undefined; // union type to allow undefined
 }

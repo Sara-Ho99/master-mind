@@ -165,6 +165,7 @@ As a learner:
   - feature-1: try authentication with clerk and complete register and login
   - feature-2: navigation(sidebar and navbar) for learner
   - feature-3: navigation(sidebar and navbar) for creator
+  - feature-4: add new course
   - Get all courses table list UI
   - Get all courses API
   - Get single course UI

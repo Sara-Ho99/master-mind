@@ -91,7 +91,11 @@ function CreatePage() {
                   Cancel
                 </Button>
               </Link>
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+              <Button
+                type="submit"
+                variant="dark"
+                disabled={!isValid || isSubmitting}
+              >
                 Next
               </Button>
             </div>

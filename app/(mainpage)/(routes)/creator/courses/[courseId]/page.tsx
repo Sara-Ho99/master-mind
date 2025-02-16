@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
+import { BadgeInfo } from "lucide-react";
+import TitleForm from "@/components/title-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
@@ -30,6 +32,15 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           <span className="text-sm text-slate-700">
             Complete all fields {completionText}
           </span>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+        <div>
+          <div className="flex items-center gap-x-2">
+            <BadgeInfo size="30" color="#219ebc" />
+            <h2 className="text-xl">Customize your course</h2>
+          </div>
+          <TitleForm initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>

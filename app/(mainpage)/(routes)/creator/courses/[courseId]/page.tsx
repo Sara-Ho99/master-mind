@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { BadgeInfo } from "lucide-react";
 import TitleForm from "@/components/title-form";
+import DescForm from "@/components/desc-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
@@ -41,6 +42,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             <h2 className="text-xl">Customize your course</h2>
           </div>
           <TitleForm initialData={course} courseId={course.id} />
+          <DescForm initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>

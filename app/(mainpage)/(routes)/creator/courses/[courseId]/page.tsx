@@ -4,6 +4,7 @@ import { BadgeInfo } from "lucide-react";
 import TitleForm from "@/components/title-form";
 import DescForm from "@/components/desc-form";
 import ImageForm from "@/components/image-form";
+import { CategoryForm } from "@/components/category-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
@@ -51,6 +52,14 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           <TitleForm initialData={course} courseId={course.id} />
           <DescForm initialData={course} courseId={course.id} />
           <ImageForm initialData={course} courseId={course.id} />
+          <CategoryForm
+            initialData={course}
+            courseId={course.id}
+            options={categories.map((category) => ({
+              label: category.name,
+              value: category.id,
+            }))}
+          />
         </div>
       </div>
     </div>

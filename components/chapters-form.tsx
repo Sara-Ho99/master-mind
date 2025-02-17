@@ -14,25 +14,28 @@ import {
 
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
-import { Pencil } from "lucide-react";
+import { PlusSquare } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Textarea } from "./ui/textarea";
+import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
-import { Course } from "@prisma/client";
+import { Course, Chapter } from "@prisma/client";
 
 interface ChaptersFormProps {
-  initialData: Course;
+  initialData: Course & { chapters: Chapter[] };
   courseId: string;
 }
 
+// chapter title
 const formSchema = z.object({
   title: z.string().min(1),
 });
 
 function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
-  const [isEditing, setIsEditing] = useState(false);
-  const toggleEdit = () => setIsEditing((prev) => !prev);
+  const [isCreating, setIsCreating] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  const toggleCreate = () => setIsCreating((prev) => !prev);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,9 +49,9 @@ function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}/chapters`, values);
-      toast.success("Course chapter updated");
-      toggleEdit();
+      await axios.post(`/api/courses/${courseId}/chapters`, values);
+      toast.success("Chapter title created");
+      toggleCreate();
       router.refresh();
     } catch {
       toast.error("Something went wrong");
@@ -59,28 +62,18 @@ function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
     <div className="mt-6 border bg-sky-200/20 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course Chapters
-        <Button onClick={toggleEdit} variant="custom">
-          {isEditing ? (
+        <Button onClick={toggleCreate} variant="custom">
+          {isCreating ? (
             <>Cancel</>
           ) : (
             <>
-              <Pencil className="h-4 w-4 mr-0" />
-              Edit
+              <PlusSquare className="h-4 w-4 mr-0" />
+              Add
             </>
           )}
         </Button>
       </div>
-      {!isEditing && (
-        <p
-          className={cn(
-            "text-sm mt-2",
-            !initialData.description && "text-slate-500 italic"
-          )}
-        >
-          {initialData.description || "No description"}
-        </p>
-      )}
-      {isEditing && (
+      {isCreating && (
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -92,7 +85,7 @@ function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Textarea
+                    <Input
                       disabled={isSubmitting}
                       placeholder="Please enter the title for this chapter"
                       {...field}
@@ -113,6 +106,26 @@ function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
             </div>
           </form>
         </Form>
+      )}
+      {!isCreating && (
+        <div
+          className={cn(
+            "text-sm mt-2",
+            !initialData.chapters.length && "text-slate-500 italic"
+          )}
+        >
+          {!initialData.chapters.length && "No chapters"}
+          {/* <ChaptersList
+            onEdit={onEdit}
+            onReorder={onReorder}
+            items={initialData.chapters || []}
+          /> */}
+        </div>
+      )}
+      {!isCreating && initialData.chapters.length > 1 && (
+        <p className="text-xs text-muted-foreground mt-4">
+          Drag and drop to reorder the chapters
+        </p>
       )}
     </div>
   );

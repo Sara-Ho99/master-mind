@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
-import { BadgeInfo, ListVideo, BadgeDollarSign, Paperclip } from "lucide-react";
+import { BadgeInfo, ListVideo, BadgeDollarSign } from "lucide-react";
 import TitleForm from "@/components/title-form";
 import DescForm from "@/components/desc-form";
 import ImageForm from "@/components/image-form";

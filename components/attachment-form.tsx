@@ -4,7 +4,7 @@ import * as z from "zod";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
-import { Pencil, PlusSquare, FileCheck, Loader, X } from "lucide-react";
+import { Pencil, PlusSquare, Paperclip, Loader, X } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Attachment, Course } from "@prisma/client";
@@ -84,7 +84,7 @@ function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
                   key={attachment.id}
                   className="flex items-center mt-2 p-3 w-full bg-sky-100 border-sky-200 border text-sky-700 rounded-md"
                 >
-                  <FileCheck className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <Paperclip className="h-4 w-4 mr-2 flex-shrink-0" />
                   <p className="text-xs line-clamp-1">{attachment.name}</p>
                   {deletingId === attachment.id && (
                     <div>

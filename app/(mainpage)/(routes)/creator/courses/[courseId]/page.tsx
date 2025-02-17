@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
-import { BadgeInfo } from "lucide-react";
+import { BadgeInfo, ListVideo } from "lucide-react";
 import TitleForm from "@/components/title-form";
 import DescForm from "@/components/desc-form";
 import ImageForm from "@/components/image-form";
@@ -51,7 +51,6 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           </div>
           <TitleForm initialData={course} courseId={course.id} />
           <DescForm initialData={course} courseId={course.id} />
-          <ImageForm initialData={course} courseId={course.id} />
           <CategoryForm
             initialData={course}
             courseId={course.id}
@@ -60,6 +59,13 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               value: category.id,
             }))}
           />
+          <ImageForm initialData={course} courseId={course.id} />
+        </div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-x-2">
+            <ListVideo size="30" color="#219ebc" />
+            <h2 className="text-xl">Course Chapters</h2>
+          </div>
         </div>
       </div>
     </div>

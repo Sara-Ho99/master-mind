@@ -7,6 +7,7 @@ import ImageForm from "@/components/image-form";
 import CategoryForm from "@/components/category-form";
 import PriceForm from "@/components/price-form";
 import AttachmentForm from "@/components/attachment-form";
+import ChaptersForm from "@/components/chapters-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
@@ -17,6 +18,11 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       attachments: {
         orderBy: {
           createdAt: "desc",
+        },
+      },
+      chapters: {
+        orderBy: {
+          position: "asc",
         },
       },
     },
@@ -37,6 +43,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     course.price,
     course.categoryId,
     course.imageUrl,
+    course.chapters.some((chapter) => chapter.isPublished),
   ];
 
   const totalFields = requiredFields.length;
@@ -84,7 +91,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               <ListVideo size="30" color="#219ebc" />
               <h2 className="text-xl">Chapters & Resource</h2>
             </div>
-            <div>chapter form</div>
+            <ChaptersForm initialData={course} courseId={course.id} />
             <AttachmentForm initialData={course} courseId={course.id} />
           </div>
         </div>

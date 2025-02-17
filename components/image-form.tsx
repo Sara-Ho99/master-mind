@@ -2,9 +2,6 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
 import { Pencil, PlusSquare, ImagePlusIcon } from "lucide-react";
@@ -30,19 +27,10 @@ function ImageForm({ initialData, courseId }: ImageFormProps) {
   const toggleEdit = () => setIsEditing((prev) => !prev);
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      imageUrl: initialData?.imageUrl || "",
-    },
-  });
-
-  const { isSubmitting, isValid } = form.formState;
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course description updated");
+      toast.success("Course image updated");
       toggleEdit();
       router.refresh();
     } catch {

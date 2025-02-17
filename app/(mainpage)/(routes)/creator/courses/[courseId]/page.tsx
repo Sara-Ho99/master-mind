@@ -6,11 +6,19 @@ import DescForm from "@/components/desc-form";
 import ImageForm from "@/components/image-form";
 import CategoryForm from "@/components/category-form";
 import PriceForm from "@/components/price-form";
+import AttachmentForm from "@/components/attachment-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,
+    },
+    include: {
+      attachments: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
   if (!course) {
@@ -28,6 +36,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     course.description,
     course.price,
     course.categoryId,
+    course.imageUrl,
   ];
 
   const totalFields = requiredFields.length;
@@ -38,7 +47,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     <div className="p-6">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-y-2">
-          <h1 className="text-2xl font-medium">Course setup</h1>
+          <h1 className="text-2xl font-medium">Course Setup</h1>
           <span className="text-sm text-slate-700">
             Complete all fields {completionText}
           </span>
@@ -48,7 +57,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
         <div>
           <div className="flex items-center gap-x-2">
             <BadgeInfo size="30" color="#219ebc" />
-            <h2 className="text-xl">Customize your course</h2>
+            <h2 className="text-xl">Customize Your Course</h2>
           </div>
           <TitleForm initialData={course} courseId={course.id} />
           <DescForm initialData={course} courseId={course.id} />
@@ -66,23 +75,17 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           <div>
             <div className="flex items-center gap-x-2">
               <BadgeDollarSign size="30" color="#219ebc" />
-              <h2 className="text-xl">Sell your course</h2>
+              <h2 className="text-xl">Sell Your Course</h2>
             </div>
             <PriceForm initialData={course} courseId={course.id} />
           </div>
           <div>
             <div className="flex items-center gap-x-2">
               <ListVideo size="30" color="#219ebc" />
-              <h2 className="text-xl">Course Chapters</h2>
+              <h2 className="text-xl">Chapters & Resource</h2>
             </div>
             <div>chapter form</div>
-          </div>
-          <div>
-            <div className="flex items-center gap-x-2">
-              <Paperclip size="30" color="#219ebc" />
-              <h2 className="text-xl">Course Attachment</h2>
-            </div>
-            <div>attachment form</div>
+            <AttachmentForm initialData={course} courseId={course.id} />
           </div>
         </div>
       </div>

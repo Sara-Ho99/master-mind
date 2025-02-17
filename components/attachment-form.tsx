@@ -4,7 +4,7 @@ import * as z from "zod";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
-import { Pencil, PlusSquare, FileCheck } from "lucide-react";
+import { Pencil, PlusSquare, FileCheck, Loader, X } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Attachment, Course } from "@prisma/client";
@@ -23,6 +23,8 @@ const formSchema = z.object({
 
 function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
   const toggleEdit = () => setIsEditing((prev) => !prev);
   const router = useRouter();
 
@@ -34,6 +36,19 @@ function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
       router.refresh();
     } catch {
       toast.error("Something went wrong");
+    }
+  };
+
+  const onDelete = async (id: string) => {
+    try {
+      setDeletingId(id);
+      await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
+      toast.success("Attachment deleted");
+      router.refresh();
+    } catch {
+      toast.error("Something went wrong");
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -71,6 +86,19 @@ function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
                 >
                   <FileCheck className="h-4 w-4 mr-2 flex-shrink-0" />
                   <p className="text-xs line-clamp-1">{attachment.name}</p>
+                  {deletingId === attachment.id && (
+                    <div>
+                      <Loader className="h-4 w-4 ml-4 animate-spin" />
+                    </div>
+                  )}
+                  {deletingId !== attachment.id && (
+                    <button
+                      onClick={() => onDelete(attachment.id)}
+                      className="ml-auto hover:opacity-75 transition"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
                 </div>
               ))}
             </div>

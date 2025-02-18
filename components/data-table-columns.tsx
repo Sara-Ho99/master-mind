@@ -91,22 +91,6 @@ export const columns: ColumnDef<Course>[] = [
             Edit
           </Button>
         </Link>
-        // <DropdownMenu>
-        //   <DropdownMenuTrigger asChild>
-        //     <Button variant="ghost" className="h-4 w-8 p-0">
-        //       <span className="sr-only">Open menu</span>
-        //       <MoreHorizontal className="h-4 w-4" />
-        //     </Button>
-        //   </DropdownMenuTrigger>
-        //   <DropdownMenuContent align="end">
-        //     <Link href={`/creator/courses/${id}`}>
-        //       <DropdownMenuItem>
-        //         <FilePen color="#219ebc" size="22" className="h-4 w-4 mr-0" />
-        //         Edit
-        //       </DropdownMenuItem>
-        //     </Link>
-        //   </DropdownMenuContent>
-        // </DropdownMenu>
       );
     },
   },

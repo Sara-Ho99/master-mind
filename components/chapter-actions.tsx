@@ -23,6 +23,7 @@ const ChapterActions = ({
   isPublished,
 }: ChapterActionsProps) => {
   const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {

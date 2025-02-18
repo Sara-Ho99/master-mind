@@ -1,6 +1,6 @@
 // indicate that the component should run on the client-side (browser) instead of the server-side (Node.js).
 "use client";
-import { Search, BookOpen, ListChecks, PieChart } from "lucide-react";
+import { Search, BookOpen, ListChecks, PieChart, ListPlus } from "lucide-react";
 import { usePathname } from "next/navigation";
 import SidebarItem from "./sidebar-item";
 
@@ -24,9 +24,9 @@ const creatorRoutes = [
     href: "/creator/courses",
   },
   {
-    icon: PieChart,
-    label: "Dashboard",
-    href: "/creator/dashboard",
+    icon: ListPlus,
+    label: "NewCourse",
+    href: "/creator/create",
   },
 ];
 

@@ -12,6 +12,7 @@ import ChapterTitleForm from "@/components/chapter-title-form";
 import ChapterDescForm from "@/components/chapter-desc-form";
 import ChapterAccessForm from "@/components/chapter-access-form";
 import ChapterVideoForm from "@/components/chapter-video-form";
+import ChapterActions from "@/components/chapter-actions";
 
 const ChapterIdPage = async ({
   params,
@@ -60,7 +61,12 @@ const ChapterIdPage = async ({
                   Complete all fields {completionText}
                 </span>
               </div>
-              <div>ACTION</div>
+              <ChapterActions
+                disabled={!isComplete}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+                isPublished={chapter.isPublished}
+              />
             </div>
           </div>
         </div>

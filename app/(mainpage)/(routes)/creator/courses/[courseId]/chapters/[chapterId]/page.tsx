@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, PlusCircle, Video, ShieldCheck } from "lucide-react";
 import { db } from "@/lib/db";
 import ChapterTitleForm from "@/components/chapter-title-form";
+import ChapterDescForm from "@/components/chapter-desc-form";
 
 const ChapterIdPage = async ({
   params,
@@ -67,7 +68,11 @@ const ChapterIdPage = async ({
                 courseId={params.courseId}
                 chapterId={params.chapterId}
               />
-              <div>Description form</div>
+              <ChapterDescForm
+                initialData={chapter}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+              />
             </div>
             <div>
               <div className="flex items-center gap-x-2">

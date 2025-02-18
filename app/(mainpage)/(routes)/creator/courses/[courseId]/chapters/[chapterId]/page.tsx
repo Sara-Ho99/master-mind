@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, PlusCircle, Video, ShieldCheck } from "lucide-react";
+import { FileLock2, ArrowLeft, Video, FileHeart } from "lucide-react";
 import { db } from "@/lib/db";
 import ChapterTitleForm from "@/components/chapter-title-form";
 import ChapterDescForm from "@/components/chapter-desc-form";
+import ChapterAccessForm from "@/components/chapter-access-form";
 
 const ChapterIdPage = async ({
   params,
@@ -60,7 +61,7 @@ const ChapterIdPage = async ({
           <div className="space-y-4">
             <div>
               <div className="flex items-center gap-x-2">
-                <PlusCircle color="#219ebc" size="30" />
+                <FileHeart color="#219ebc" size="30" />
                 <h2 className="text-xl">Customize Your Chapter</h2>
               </div>
               <ChapterTitleForm
@@ -76,15 +77,19 @@ const ChapterIdPage = async ({
             </div>
             <div>
               <div className="flex items-center gap-x-2">
-                <ShieldCheck size="30" />
+                <FileLock2 color="#219ebc" size="30" />
                 <h2 className="text-xl">Access Settings</h2>
               </div>
-              <div>Access form</div>
+              <ChapterAccessForm
+                initialData={chapter}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+              />
             </div>
           </div>
           <div>
             <div className="flex items-center gap-x-2">
-              <Video size="30" />
+              <Video color="#219ebc" size="30" />
               <h2 className="text-xl">Add a video</h2>
             </div>
             <div>Video form</div>

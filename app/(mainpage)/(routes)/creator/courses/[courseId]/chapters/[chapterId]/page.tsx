@@ -1,10 +1,17 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { FileLock2, ArrowLeft, Video, FileHeart } from "lucide-react";
+import {
+  FileLock2,
+  ArrowLeft,
+  Video,
+  FileHeart,
+  FileVideo2,
+} from "lucide-react";
 import { db } from "@/lib/db";
 import ChapterTitleForm from "@/components/chapter-title-form";
 import ChapterDescForm from "@/components/chapter-desc-form";
 import ChapterAccessForm from "@/components/chapter-access-form";
+import ChapterVideoForm from "@/components/chapter-video-form";
 
 const ChapterIdPage = async ({
   params,
@@ -89,10 +96,14 @@ const ChapterIdPage = async ({
           </div>
           <div>
             <div className="flex items-center gap-x-2">
-              <Video color="#219ebc" size="30" />
-              <h2 className="text-xl">Add a video</h2>
+              <FileVideo2 color="#219ebc" size="30" />
+              <h2 className="text-xl">Chapter Video</h2>
             </div>
-            <div>Video form</div>
+            <ChapterVideoForm
+              initialData={chapter}
+              courseId={params.courseId}
+              chapterId={params.chapterId}
+            />
           </div>
         </div>
       </div>

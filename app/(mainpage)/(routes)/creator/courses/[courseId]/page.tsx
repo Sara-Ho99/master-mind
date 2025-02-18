@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
-import { BadgeInfo, ListVideo, BadgeDollarSign } from "lucide-react";
+import { BadgeCheck, ListVideo, BadgeDollarSign } from "lucide-react";
 import TitleForm from "@/components/title-form";
 import DescForm from "@/components/desc-form";
 import ImageForm from "@/components/image-form";
@@ -8,6 +8,7 @@ import CategoryForm from "@/components/category-form";
 import PriceForm from "@/components/price-form";
 import AttachmentForm from "@/components/attachment-form";
 import ChaptersForm from "@/components/chapters-form";
+import CourseActions from "@/components/course-actions";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
@@ -50,6 +51,8 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const completedFields = requiredFields.filter(Boolean).length;
 
   const completionText = `(${completedFields}/${totalFields})`;
+  const isComplete = requiredFields.every(Boolean);
+
   return (
     <div className="p-6">
       <div className="flex items-center justify-between">
@@ -59,11 +62,16 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             Complete all fields {completionText}
           </span>
         </div>
+        <CourseActions
+          disabled={!isComplete}
+          courseId={params.courseId}
+          isPublished={course.isPublished}
+        />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
         <div>
           <div className="flex items-center gap-x-2">
-            <BadgeInfo size="30" color="#219ebc" />
+            <BadgeCheck size="30" color="#219ebc" />
             <h2 className="text-xl">Customize Your Course</h2>
           </div>
           <TitleForm initialData={course} courseId={course.id} />

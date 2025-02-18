@@ -57,7 +57,7 @@ const ChapterActions = ({
 
       toast.success("Chapter deleted");
       router.refresh();
-      router.push(`/teacher/courses/${courseId}`);
+      router.push(`/creator/courses/${courseId}`);
     } catch {
       toast.error("Something went wrong");
     } finally {

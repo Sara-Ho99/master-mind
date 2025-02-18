@@ -1,12 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import {
-  FileLock2,
-  ArrowLeft,
-  Video,
-  FileHeart,
-  FileVideo2,
-} from "lucide-react";
+import { FileLock2, ArrowLeft, FileHeart, FileVideo2 } from "lucide-react";
 import { db } from "@/lib/db";
 import ChapterTitleForm from "@/components/chapter-title-form";
 import ChapterDescForm from "@/components/chapter-desc-form";

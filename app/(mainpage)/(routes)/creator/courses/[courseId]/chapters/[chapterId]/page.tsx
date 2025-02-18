@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, PlusCircle, Video, ShieldCheck } from "lucide-react";
-
 import { db } from "@/lib/db";
+import ChapterTitleForm from "@/components/chapter-title-form";
 
 const ChapterIdPage = async ({
   params,
@@ -59,10 +59,14 @@ const ChapterIdPage = async ({
           <div className="space-y-4">
             <div>
               <div className="flex items-center gap-x-2">
-                <PlusCircle size="30" />
-                <h2 className="text-xl">Customize your chapter</h2>
+                <PlusCircle color="#219ebc" size="30" />
+                <h2 className="text-xl">Customize Your Chapter</h2>
               </div>
-              <div>Title form</div>
+              <ChapterTitleForm
+                initialData={chapter}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+              />
               <div>Description form</div>
             </div>
             <div>

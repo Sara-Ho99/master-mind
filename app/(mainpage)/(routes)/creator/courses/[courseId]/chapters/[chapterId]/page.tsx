@@ -39,9 +39,9 @@ const ChapterIdPage = async ({
           <div className="w-full">
             <Link
               href={`/creator/courses/${params.courseId}`}
-              className="flex items-center text-sm hover:opacity-75 transition mb-6"
+              className="flex items-center text-sm text-[#023047] font-bold hover:text-[#219ebc] hover:opacity-75 transition mb-6"
             >
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft color="#219ebc" size="22" className="mr-1" />
               Back to Course Setup
             </Link>
             <div className="flex items-center justify-between w-full">

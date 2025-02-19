@@ -14,6 +14,7 @@ function CategoryItem({ label, value }: CategoryItemProps) {
   const searchParams = useSearchParams();
 
   const currentCategoryId = searchParams.get("categoryId");
+  const currentTitle = searchParams.get("title");
 
   const isSelected = currentCategoryId === value;
 
@@ -22,6 +23,7 @@ function CategoryItem({ label, value }: CategoryItemProps) {
       {
         url: pathname,
         query: {
+          title: currentTitle,
           categoryId: isSelected ? null : value,
         },
       },

@@ -6,14 +6,14 @@ import SidebarItem from "./sidebar-item";
 
 const learnerRoutes = [
   {
-    icon: BookOpen,
-    label: "MyCourse",
-    href: "/",
-  },
-  {
     icon: Search,
     label: "Browse",
     href: "/search",
+  },
+  {
+    icon: BookOpen,
+    label: "MyCourse",
+    href: "/",
   },
 ];
 

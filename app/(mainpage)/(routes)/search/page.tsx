@@ -1,7 +1,9 @@
+import CategoryPanel from "@/components/category-panel";
+
 function SearchPage() {
   return (
     <div>
-      <h1>Search Page</h1>
+      <CategoryPanel />
     </div>
   );
 }

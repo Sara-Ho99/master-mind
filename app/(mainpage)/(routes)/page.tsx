@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { getMyCourses } from "@/actions/get-mycourse";
 import { CoursesList } from "@/components/courses-list";
-import { ProgressInfoCard } from "@/components/progress-info-card";
+import { InfoCard } from "@/components/info-card";
 import { CheckCircle, Clock } from "lucide-react";
 
 async function HomePage() {
@@ -17,16 +17,20 @@ async function HomePage() {
   return (
     <div className="p-6 space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <ProgressInfoCard
+        <InfoCard
           color="#0096c7"
           icon={Clock}
           label="In Progress"
+          item="Course"
+          items="Courses"
           numberOfItems={coursesInProgress.length}
         />
-        <ProgressInfoCard
+        <InfoCard
           icon={CheckCircle}
           color="#208b3a"
           label="Completed"
+          item="Course"
+          items="Courses"
           numberOfItems={completedCourses.length}
         />
       </div>

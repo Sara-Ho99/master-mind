@@ -36,7 +36,7 @@ function CourseSidebarItem({
       className={cn(
         "flex items-center gap-x-2 text-slate-500 text-sm font-[700] pl-6 transition-all hover:text-slate-600 hover:bg-slate-300/20",
         isActive &&
-          "text-[#023047] bg-[#8ecae6] hover:bg-[#8ecae6] hover:text-[#023047]",
+          "text-[#023047] bg-[#8ecae6]/50 hover:bg-[#8ecae6]/50 hover:text-[#023047]",
         isCompleted && "text-emerald-700 hover:text-emerald-700",
         isCompleted && isActive && "bg-emerald-200/20"
       )}

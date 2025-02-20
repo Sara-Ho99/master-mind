@@ -65,7 +65,7 @@ export const CourseProgressButton = ({
       className="w-full md:w-auto"
     >
       {isCompleted ? "Not completed yet" : "Mark as complete"}
-      <Icon className="h-4 w-4 ml-2" />
+      <Icon className="h-4 w-4 ml-0" />
     </Button>
   );
 };

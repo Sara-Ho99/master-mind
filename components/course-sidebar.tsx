@@ -30,7 +30,7 @@ async function CourseSidebar({ course, progressCount }: CourseSidebarProps) {
   });
 
   return (
-    <div className="h-full border-r flex flex-col overflow-y-auto bg-sky-200/20 shadow-sm">
+    <div className="h-full border-r flex flex-col overflow-y-auto bg-white shadow-sm">
       <div className="p-6 flex flex-col border-b">
         <h1 className=" font-bold text-[#023047]">{course.title}</h1>
         {purchase && (

@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
+import { isCreator } from "@/lib/creator";
 
 export async function POST(req: Request) {
   try {
     // clerk documentation
     const { userId } = await auth();
-    if (!userId) {
+    const isCreatorUser = isCreator(userId);
+    if (!userId || !isCreatorUser) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 

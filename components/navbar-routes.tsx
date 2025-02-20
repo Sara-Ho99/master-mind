@@ -17,7 +17,7 @@ function NavbarRoutes() {
         <Link href="/">
           <Button size="sm" variant="custom">
             <LogOut className="h-4 w-4 p-0" />
-            Learner mode
+            Exit
           </Button>
         </Link>
       ) : (

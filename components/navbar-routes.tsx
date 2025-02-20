@@ -1,11 +1,13 @@
 "use client";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useAuth } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { LogIn, LogOut } from "lucide-react";
 import Link from "next/link";
+import { isCreator } from "@/lib/creator";
 
 function NavbarRoutes() {
+  const { userId } = useAuth(); // useAuth() only works in the client
   const pathname = usePathname();
 
   const isCreatorPage = pathname?.startsWith("/creator");
@@ -20,14 +22,14 @@ function NavbarRoutes() {
             Exit
           </Button>
         </Link>
-      ) : (
+      ) : isCreator(userId) ? (
         <Link href="/creator/courses">
           <Button size="sm" variant="custom">
             <LogIn className="h-4 w-4 p-0" />
             Creator mode
           </Button>
         </Link>
-      )}
+      ) : null}
       <UserButton />
     </div>
   );

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import CourseProgress from "@/components/course-progress";
-import { cn } from "@/lib/utils";
 
 interface CourseCardProps {
   id: string;
@@ -32,7 +31,7 @@ export const CourseCard = ({
 }: CourseCardProps) => {
   return (
     <Link href={`/courses/${id}`}>
-      <div className="group hover:border-[#8ecae6] hover:shadow-md transition overflow-hidden border rounded-lg p-2 h-full">
+      <div className="group hover:border-sky-100 hover:shadow-lg transition overflow-hidden border rounded-lg p-2 h-full">
         <div className="relative w-full aspect-video rounded-md overflow-hidden">
           <Image fill className="object-cover" alt={title} src={imageUrl} />
         </div>

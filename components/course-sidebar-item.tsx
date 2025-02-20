@@ -46,7 +46,7 @@ function CourseSidebarItem({
           size={22}
           className={cn(
             "text-slate-500",
-            isActive && "text-[#8ecae6]",
+            isActive && "text-[#023047]",
             isCompleted && "text-emerald-700"
           )}
         />

@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { getChapter } from "@/actions/get-chapter";
 import { VideoPlayer } from "@/components/video-player";
+import { CourseEnrollButton } from "@/components/course-enroll-button";
 
 async function ChapterIdPage({
   params,
@@ -47,6 +48,16 @@ async function ChapterIdPage({
           isLocked={isLocked}
           completeOnEnd={completeOnEnd}
         />
+      </div>
+      <div>
+        <div className="p-4 flex flex-col md:flex-row items-center justify-between">
+          <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
+
+          <CourseEnrollButton
+            courseId={params.courseId}
+            price={course.price!}
+          />
+        </div>
       </div>
     </div>
   );

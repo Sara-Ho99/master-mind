@@ -18,15 +18,16 @@ async function HomePage() {
     <div className="p-6 space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <ProgressInfoCard
+          color="#0096c7"
           icon={Clock}
           label="In Progress"
           numberOfItems={coursesInProgress.length}
         />
         <ProgressInfoCard
           icon={CheckCircle}
+          color="#208b3a"
           label="Completed"
           numberOfItems={completedCourses.length}
-          variant="success"
         />
       </div>
       <CoursesList items={[...coursesInProgress, ...completedCourses]} />

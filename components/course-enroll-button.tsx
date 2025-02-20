@@ -21,7 +21,21 @@ export const CourseEnrollButton = ({
   price,
   courseId,
 }: CourseEnrollButtonProps) => {
-  const onClick = async () => {};
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onClick = async () => {
+    try {
+      setIsLoading(true);
+
+      const response = await axios.post(`/api/courses/${courseId}/checkout`);
+
+      toast.success("Enrolled successfully!");
+    } catch {
+      toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Button

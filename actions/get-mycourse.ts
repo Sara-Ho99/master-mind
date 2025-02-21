@@ -18,6 +18,9 @@ export const getMyCourses = async (userId: string): Promise<MyCourse> => {
     const purchasedCourses = await db.purchase.findMany({
       where: {
         userId: userId,
+        course: {
+          isPublished: true,
+        },
       },
       select: {
         course: {

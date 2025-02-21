@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import Mux from "@mux/mux-node";
-import { isCreator } from "@/lib/creator";
+// import { isCreator } from "@/lib/creator";
 
 const { Video } = new Mux(
   process.env.MUX_TOKEN_ID!,
@@ -15,9 +15,8 @@ export async function DELETE(
 ) {
   try {
     const { userId } = await auth();
-    const isCreatorUser = isCreator(userId);
 
-    if (!userId || !isCreatorUser) {
+    if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
@@ -65,12 +64,11 @@ export async function PATCH(
 ) {
   try {
     const { userId } = await auth();
-    const isCreatorUser = isCreator(userId);
 
     const { courseId } = params;
     const values = await req.json();
 
-    if (!userId || !isCreatorUser) {
+    if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
